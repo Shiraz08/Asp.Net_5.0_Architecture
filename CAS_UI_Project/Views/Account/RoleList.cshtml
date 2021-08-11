@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CAS_UI_Project.Models.ViewModels.UserRolesViewModel>
+<br />
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Role List</h3>
+                            <div class="card-tools">
+                               <a href="~/Account/CreateRole" class="btn btn-success">Add New Role</a>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.RoleName</td>
+                                            <td>
+                                                <a href="~/Account/CreateRole?id=@item.Id" class="btn btn-info">Edit</a>
+                                                <a href="~/Account/DeleteRole?id=@item.Id" class="btn btn-danger">Delete</a>
+                                                <a href="~/Account/GetAllClaims?roleid=@item.Id" class="btn btn-primary">Add Claims</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+

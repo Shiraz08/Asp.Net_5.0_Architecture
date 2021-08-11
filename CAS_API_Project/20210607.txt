@@ -1,0 +1,20 @@
+2021-07-01 00:09:59.0454 Info Message Template Auto Format enabled
+2021-07-01 00:09:59.1486 Info Loading assembly: NLog.Web.AspNetCore
+2021-07-01 00:09:59.2282 Info Adding target FileTarget(Name=alldata)
+2021-07-01 00:09:59.2544 Info Adding target FileTarget(Name=otherFile-web)
+2021-07-01 00:09:59.3215 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=E:\v1.CAS_API_Project\CAS_API_Project\CAS_API_Project\bin\Debug\net5.0\nlog.config
+2021-07-01 00:38:54.1839 Info Message Template Auto Format enabled
+2021-07-01 00:38:54.2097 Info Loading assembly: NLog.Web.AspNetCore
+2021-07-01 00:38:54.2881 Info Adding target FileTarget(Name=alldata)
+2021-07-01 00:38:54.3036 Info Adding target FileTarget(Name=otherFile-web)
+2021-07-01 00:38:54.3595 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=E:\v1.CAS_API_Project\CAS_API_Project\CAS_API_Project\bin\Debug\net5.0\nlog.config
+2021-07-01 00:48:51.0381 Info Message Template Auto Format enabled
+2021-07-01 00:48:51.0642 Info Loading assembly: NLog.Web.AspNetCore
+2021-07-01 00:48:51.1332 Info Adding target FileTarget(Name=alldata)
+2021-07-01 00:48:51.1332 Info Adding target FileTarget(Name=otherFile-web)
+2021-07-01 00:48:51.2005 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=E:\v1.CAS_API_Project\CAS_API_Project\CAS_API_Project\bin\Debug\net5.0\nlog.config
+2021-07-01 02:06:27.6264 Info Message Template Auto Format enabled
+2021-07-01 02:06:27.6508 Info Loading assembly: NLog.Web.AspNetCore
+2021-07-01 02:06:27.7359 Info Adding target FileTarget(Name=alldata)
+2021-07-01 02:06:27.7505 Info Adding target FileTarget(Name=otherFile-web)
+2021-07-01 02:06:27.8355 Info Validating config: TargetNames=alldata, otherFile-web, ConfigItems=45, FilePath=E:\v1.CAS_API_Project\CAS_API_Project\CAS_API_Project\bin\Debug\net5.0\nlog.config

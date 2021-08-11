@@ -1,0 +1,32 @@
+﻿@model CAS_UI_Project.Models.ViewModels.UserRolesViewModel
+<br />
+<section class="content">
+    <div class="container-fluid">
+        <form method="post" asp-action="CreateRole" asp-controller="Account">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Add New Role</h3>
+                    <div class="card-tools">
+                        <input type="hidden" asp-for="@Model.Id" />
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Role Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Role Name" asp-for="@Model.RoleName" />
+                            </div>
+                            <div class="form-group" style="padding-top: 22px;">
+                                <label></label>
+                                <input type="submit" class="btn btn-success" value="Add" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+

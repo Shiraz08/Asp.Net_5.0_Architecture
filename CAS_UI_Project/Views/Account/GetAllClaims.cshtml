@@ -1,0 +1,31 @@
+﻿@model CAS_UI_Project.Models.Claims.ClaimsViewModel
+
+<br />
+<section class="content">
+    <div class="container-fluid">
+        <form method="post" asp-action="UpdateAllClaims" asp-controller="Account">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Manage Claims</h2>
+                </div>
+                <div class="card-body">
+                    <input type="hidden" asp-for="@Model.RoleId" />
+                    @for (var i = 0; i < Model.ClaimsList.Count; i++)
+                    {
+                        <div class="form-check m-1">
+                            <input type="hidden" asp-for="@Model.ClaimsList[i].ClaimsType" />
+                            <input asp-for="@Model.ClaimsList[i].IsSelected" class="form-check-input" />
+                            <label asp-for="@Model.ClaimsList[i].IsSelected" class="form-check-label">
+                                @Model.ClaimsList[i].ClaimsType
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Update" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+

@@ -1,0 +1,205 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">University Students Info</h3>
+                <div class="card-tools">
+                    <h6 class="text-success" id="msg" style="display:none">Successfully save changes.</h6>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" id="name" />
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="number" class="form-control" id="phone" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select class="form-control" id="departmentsDropdown" name="departmentsDropdown"></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Course</label>
+                            <select class="form-control" id="CourseDropdown" name="CourseDropdown"></select>
+                        </div>
+                        <div class="form-group" style="padding-top: 22px;">
+                            <label></label>
+                            <button class="btn btn-success mt-2" id="addupbtn" onclick="AddStudent()">Add</button>
+                            <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#AddCoursepopup">Add Course</button>
+                            <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#AddDepartmentpopup">Add Department</button>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+</section>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Student Data List</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="students" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Department Name</th>
+                                    <th>Class Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stutbl"></tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+@*<div class="container mt-5 border">
+        <h6 class="text-success" id="msg" style="display:none">Successfully save changes.</h6>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="name" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="email" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="number" class="form-control" id="phone" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Department</label>
+                    <select class="form-control" id="departmentsDropdown" name="departmentsDropdown"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Course</label>
+                    <select class="form-control" id="CourseDropdown" name="CourseDropdown"></select>
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-top: 23px;">
+                <div class="form-group">
+                    <button class="btn btn-success mt-2" id="addupbtn" onclick="AddStudent()">Add</button>
+                </div>
+            </div>
+            <div class="col-md-2" style="padding-top: 23px;">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#AddCoursepopup">Add Course</button>
+                </div>
+            </div>
+            <div class="col-md-2" style="padding-top: 23px;">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success mt-2" data-toggle="modal" data-target="#AddDepartmentpopup">Add Department</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+<div class="modal fade" id="AddCoursepopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Course Name:</label>
+                        <input type="text" class="form-control" id="CourseName">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="AddStudentCourse();">Add Course</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AddDepartmentpopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Student Department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Department Name:</label>
+                        <input type="text" class="form-control" id="DepartmentName">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="AddStudentDepartment();">Add Department</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/ViewJs/UniversityStudent.js"></script>

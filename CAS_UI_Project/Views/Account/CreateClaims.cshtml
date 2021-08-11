@@ -1,0 +1,56 @@
+﻿@model CAS_UI_Project.Models.ViewModels.RoleClaimViewModel
+
+
+<div class="container">
+    <div>
+        <h4 class="font-weight-bold">Add Claims</h4>
+        <form method="post" asp-action="CreateClaims" asp-controller="Account">
+            <input type="hidden" asp-for="@Model.RoleId" />
+            <div class="row">
+                <div class="col-md-6 border p-4">
+                    <div class="form-group">
+                        <label>Claim Type</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="@Model.ClaimType" />
+                    </div>
+                    <div class="form-group">
+                        <label>Claim Value</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="@Model.ClaimValue" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Add" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Claim Type</th>
+                <th>Claim Value</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.RoleClaims != null)
+            {
+                foreach (var item in ViewBag.RoleClaims)
+                {
+            <tr>
+                <td>
+                    @item.Type
+                </td>
+                <td>
+                    @item.Value
+                </td>
+                <td>
+                   <a href="~/Account/DeleteClaim?claim=@item.Value&roleid=@Model.RoleId">Delete</a>
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

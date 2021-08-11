@@ -1,0 +1,132 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_IdentityLayout.cshtml";
+}
+
+
+<div class="card-body">
+    <p class="login-box-msg">Create a new account</p>
+
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="input-group mb-3">
+            <input asp-for="Input.FirstName" class="form-control" placeholder="Enter First Name..!" /><br />
+            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="Input.LastName" class="form-control" placeholder="Enter last Name..!" /><br />
+            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <input asp-for="Input.Email" class="form-control" placeholder="Enter Email..!" /><br />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="Input.Password" class="form-control" placeholder="Enter Password..!" /><br />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Re-Enter Password..!" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="file" placeholder="Select Image..!"
+                   accept=".png,.jpg,.jpeg,.gif,.tif"
+                   asp-for="Input.ProfilePicture"
+                   class="form-control"
+                   style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                   onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+            <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="icheck-primary">
+                    <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                    <label for="agreeTerms">
+                        I agree to the <a href="#">terms</a>
+                    </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+        @{
+            if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            {
+                <div>
+                    <p>
+                        There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                        for details on setting up this ASP.NET application to support logging in via external services.
+                    </p>
+                </div>
+                <div>
+                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="">
+                </div>
+            }
+            else
+            {
+                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                    <div>
+                        <p>
+                            @foreach (var provider in Model.ExternalLogins)
+                            {
+                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                            }
+                        </p>
+                    </div>
+                </form>
+            }
+        }
+        @*<a href="#" class="btn btn-block btn-primary">
+                <i class="fab fa-facebook mr-2"></i>
+                Sign up using Facebook
+            </a>
+            <a href="#" class="btn btn-block btn-danger">
+                <i class="fab fa-google-plus mr-2"></i>
+                Sign up using Google+
+            </a>*@
+
+
+    </div>
+    <a  asp-area="Identity" asp-page="/Account/Login">Go to Login</a>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
